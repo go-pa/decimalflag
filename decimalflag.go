@@ -1,3 +1,5 @@
+// package decimalflag implements standard library flag for
+// github.com/shopspring/decimal.
 package decimalflag
 
 import "github.com/shopspring/decimal"
@@ -29,4 +31,11 @@ func (d *DecimalFlag) Get() interface{} {
 // Decimal returns the decimal.Decimal value
 func (d *DecimalFlag) Decimal() decimal.Decimal {
 	return decimal.Decimal(*d)
+}
+
+// Var casts a *decimal.Decimal to a *DecimalFlag.
+//
+// To shorten flag.Var(decimalFlag.Var(&foo)... lines.
+func Var(v *decimal.Decimal) *DecimalFlag {
+	return (*DecimalFlag)(v)
 }
